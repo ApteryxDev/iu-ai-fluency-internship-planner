@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title data-project-name="true">Internship Planner</title>
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/theme.css">
+</head>
+<body>
+<main>
+
+<header class="top-bar">
+  <div>
+    <p class="eyebrow" data-project-phase="true"></p>
+    <h1><span data-project-name="true"></span>: planning workspace</h1>
+  </div>
+  <div class="row">
+    <span class="badge" id="apiStatus"></span>
+    <button id="settingsBtn" class="secondary">API settings</button>
+    <button id="configBtn" class="secondary">View config.yml</button>
+  </div>
+</header>
+
+<div id="notice" role="status" hidden></div>
+<div id="researchStatus" class="banner" hidden></div>
+
+<div class="board">
+
+<!-- 01 Advertisements and requirements -->
+<section class="panel" id="ads">
+  <h2><span class="num">01</span> <span data-page-label="ads"></span></h2>
+
+  <div class="ad-filters">
+    <div>
+      <span class="label">Role keywords</span>
+      <div id="roleChips" class="chips"></div>
+    </div>
+    <label class="location">Location
+      <input id="location" list="locationChoices">
+      <datalist id="locationChoices"></datalist>
+    </label>
+  </div>
+
+  <span class="label">Platforms</span>
+  <div class="row spread">
+    <div id="platforms" class="checks inline"></div>
+    <button id="researchAds">Research</button>
+  </div>
+
+  <div class="row spread toolbar">
+    <div class="row">
+      <button class="secondary" id="addAd">Add listing</button>
+      <button class="secondary" id="importBtn">Import CSV</button>
+      <input type="file" id="importFile" accept=".csv" hidden>
+      <a class="button secondary" href="/export/advertisements">Export CSV</a>
+    </div>
+    <div class="selection-note">
+      <span class="muted">you select five yourself</span>
+      <b id="selectedCount"></b>
+    </div>
+  </div>
+  <p id="similarityWarning" class="warning" hidden></p>
+
+  <div class="table-wrap">
+    <table class="grid-table" id="adTable">
+      <thead><tr><th class="narrow">Select</th><th>Job title</th><th>Employer</th><th>Location</th><th>Requirements</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="review-box" id="adReview">
+    <div class="review-head">Source review (for selected listing)</div>
+    <div id="adReviewBody" class="review-body"></div>
+  </div>
+</section>
+
+<!-- 02 Skills and certifications -->
+<section class="panel" id="skills">
+  <h2><span class="num">02</span> <span data-page-label="skills"></span></h2>
+
+  <div class="skill-inputs">
+    <label>Chosen skills
+      <textarea id="skillInput" rows="2" data-placeholder="skillInput"></textarea>
+    </label>
+    <label>My baseline
+      <input id="baseline" data-placeholder="baseline">
+    </label>
+    <button id="researchSkills">Research courses</button>
+  </div>
+
+  <div class="row toolbar">
+    <button id="addSkill" class="secondary">Add course</button>
+    <a class="button secondary" href="/export/skills">Export CSV</a>
+    <span class="muted">Click a row to review it. Approved options are scheduled from top to bottom.</span>
+  </div>
+
+  <div class="table-wrap">
+    <table class="grid-table" id="skillTable">
+      <thead><tr><th>Skill</th><th>Certification / course</th><th>Difficulty</th><th>Preparation time</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="review-box" id="skillReview">
+    <div class="review-head">Review selected option</div>
+    <div id="skillReviewBody" class="review-body"></div>
+  </div>
+</section>
+
+<!-- 03 Schedule and evidence -->
+<section class="panel wide" id="exports">
+  <div class="row spread">
+    <h2><span class="num">03</span> <span data-page-label="exports"></span></h2>
+    <span class="muted" id="configNote"></span>
+  </div>
+
+  <div class="schedule-controls">
+    <label>Start date <input type="date" id="startDate"></label>
+    <label>Weekly study time <select id="weeklyHours"></select></label>
+    <div>
+      <span class="label">Study days</span>
+      <div id="days" class="checks inline"></div>
+    </div>
+    <button id="buildSchedule"></button>
+    <div class="export-group">
+      <span class="label">Export plan</span>
+      <div class="row">
+        <a class="button secondary" href="/export/trello">Trello</a>
+        <a class="button secondary" href="/export/obsidian">Obsidian</a>
+        <a class="button secondary" href="/export/calendar">Calendar (.ics)</a>
+      </div>
+    </div>
+  </div>
+
+  <p id="scheduleSummary" class="muted"></p>
+  <div class="table-wrap gantt-wrap">
+    <table class="grid-table gantt" id="gantt"></table>
+  </div>
+
+  <details id="sessionList">
+    <summary>Session dates and Trello card text</summary>
+    <div id="sessionCards" class="week-grid"></div>
+  </details>
+</section>
+
+<!-- Evidence log: prompts, outputs and my checks (needed for the portfolio examples) -->
+<section class="panel wide" id="evidence">
+  <div class="row spread">
+    <div>
+      <h2>Research and evidence log</h2>
+      <p class="muted">Exact prompts, actual outputs and my own checks stay together here.</p>
+    </div>
+    <div class="row">
+      <button id="addEvidence" class="secondary">+ Manual note</button>
+      <a href="/export/evidence" class="button secondary">Export evidence JSON</a>
+    </div>
+  </div>
+  <div id="evidenceCards"></div>
+</section>
+
+</div>
+
+<footer>Built with AI assistance. The independent baseline and the final decisions are recorded separately.</footer>
+</main>
+
+<dialog id="modal">
+  <form id="modalForm">
+    <div class="row spread"><h2 id="modalTitle"></h2><button type="button" id="closeModal" class="secondary">Close</button></div>
+    <div id="modalError" role="alert" hidden></div>
+    <div id="modalBody"></div>
+    <div class="modal-actions"><button type="submit">Save changes</button></div>
+  </form>
+</dialog>
+<script src="/app.js"></script>
+</body>
+</html>

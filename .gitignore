@@ -1,0 +1,24 @@
+# Python and local environments
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+
+# Local credentials (the API key never goes in config.yml)
+.env
+.env.*
+
+# Private project data: real advertisements, research responses, decisions
+data/*
+!data/sample-project.json
+!data/raw/
+data/raw/*
+!data/raw/import-template.csv
+!data/raw/.gitkeep
+
+# Generated exports
+exports/*
+!exports/.gitkeep
+
+# OS files
+.DS_Store

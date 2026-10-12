@@ -1,0 +1,52 @@
+{
+  "_sample_notice": "Fictional demonstration data created by Codex. No real employer, provider, research finding, verification or approval.",
+  "advertisements": [
+    {
+      "id": "demo-ad-01",
+      "title": "Fictional AI internship",
+      "employer": "Fictional Example Studio",
+      "location": "Example City",
+      "duration": "Fictional six-month placement",
+      "url": "https://example.invalid/internship",
+      "original_text": "Fictional sample: practise Python in an example internship.",
+      "requirements": "Fictional example requirement: Python.",
+      "review": "",
+      "selection_reason": "",
+      "retrieved_at": "",
+      "selected": false,
+      "verified": false,
+      "origin": "fictional_sample",
+      "research_id": ""
+    }
+  ],
+  "skills": [
+    {
+      "id": "demo-option-01",
+      "skill": "Python",
+      "jobs": "Fictional AI internship",
+      "certification": "Fictional Python practice activity",
+      "issuer": "Fictional Example Studio",
+      "kind": "Fictional practice activity",
+      "difficulty": "Example only",
+      "duration": "Example only",
+      "hours": 2.0,
+      "prerequisites": "",
+      "url": "https://example.invalid/practice",
+      "rationale": "Demonstrates a linked learning option; not a recommendation.",
+      "recognition": "Not applicable: fictional sample",
+      "alternatives": "",
+      "review": "",
+      "approved": false,
+      "research_id": "",
+      "related_advertisement_ids": [
+        "demo-ad-01"
+      ]
+    }
+  ],
+  "tasks": [],
+  "events": [],
+  "research": [],
+  "schedule": [],
+  "schedule_settings": {},
+  "revision": 0
+}
