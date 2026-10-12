@@ -35,7 +35,15 @@ The planner brings the three steps of that decision into one page: collecting an
 
 ## 🗺️ How It Works
 
-The page follows the order in which I plan, as drawn in my [wireframe](docs/wireframe.pdf):
+The page follows the order in which I plan. I sketched this layout myself before any AI worked on the interface:
+
+<div align="center">
+
+![My wireframe for the planner](docs/wireframe.png)
+<sub>My wireframe, 11 October 2026 (<a href="docs/wireframe.pdf">PDF version</a>). The finished interface follows these three panels.</sub>
+
+</div>
+
 
 | | Panel | What happens there |
 |:---:|---|---|
@@ -144,7 +152,7 @@ internship-planner/
 │   ├── sample-project.json     # fictional demo data
 │   └── raw/import-template.csv # CSV template for bulk advertisement import
 ├── docs/
-│   ├── wireframe.pdf           # my original layout sketch
+│   ├── wireframe.png · .pdf    # my original layout sketch
 │   └── screenshots/
 └── exports/                    # generated files (ignored by Git)
 ```
@@ -155,8 +163,8 @@ internship-planner/
 
 ```bash
 # 1️⃣ Clone the repository
-git clone https://github.com/ApteryxDev/iu-ai-fluency-internship-planner.git
-cd iu-ai-fluency-internship-planner
+git clone https://github.com/ApteryxDev/internship-planner.git
+cd internship-planner
 
 # 2️⃣ Create a virtual environment and install
 python3 -m venv .venv
